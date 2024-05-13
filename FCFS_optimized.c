@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
     int l = requests[0];
     int r = requests[REQUEST_SIZE-1];
 
-    if(headLoc > l){
+    if(headLoc >= l){
         if(abs(headLoc-l) < abs(headLoc-r)) {
             int mid = 0;
             
