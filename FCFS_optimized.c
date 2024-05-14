@@ -39,13 +39,18 @@ int main(int argc, char* argv[]) {
     int l = requests[0];
     int r = requests[REQUEST_SIZE-1];
 
-    if(headLoc >= l){
+    if(headLoc > l){
         if(abs(headLoc-l) < abs(headLoc-r)) {
             int mid = 0;
             
             while(requests[mid++] < headLoc);
             mid--;
-            qsort(requests, mid, sizeof(int), descComparator);
+            
+            for(int i = 0; i < mid/2; i++) {
+                int x = requests[i];
+                requests[i] = requests[mid-1-i];
+                requests[mid-1-i] = x;
+            }
         }
         else {
             int mid = 0;
